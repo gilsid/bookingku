@@ -10,7 +10,7 @@ class Formatters {
   /// Contoh: 450000 → "Rp 450.000"
   static String currency(int amount) {
     final formatter = NumberFormat.currency(
-      locale: 'id_ID',
+      locale: 'id',
       symbol: 'Rp ',
       decimalDigits: 0,
     );
@@ -35,13 +35,13 @@ class Formatters {
   /// Format DateTime ke string tanggal Indonesia.
   /// Contoh: 2023-10-15 → "15 Okt 2023"
   static String dateShort(DateTime date) {
-    return DateFormat('dd MMM yyyy', 'id_ID').format(date);
+    return DateFormat('dd MMM yyyy', 'id').format(date);
   }
 
   /// Format DateTime ke string tanggal lengkap.
   /// Contoh: 2023-10-15 → "15 Oktober 2023"
   static String dateFull(DateTime date) {
-    return DateFormat('dd MMMM yyyy', 'id_ID').format(date);
+    return DateFormat('dd MMMM yyyy', 'id').format(date);
   }
 
   /// Format DateTime ke nama hari singkat.
@@ -54,7 +54,7 @@ class Formatters {
   /// Format DateTime ke nama bulan dan tahun.
   /// Contoh: 2023-10 → "Oktober 2023"
   static String monthYear(DateTime date) {
-    return DateFormat('MMMM yyyy', 'id_ID').format(date);
+    return DateFormat('MMMM yyyy', 'id').format(date);
   }
 
   /// Format waktu.

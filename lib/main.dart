@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:bookingku/core/theme/app_theme.dart';
 import 'package:bookingku/core/routes/app_router.dart';
 import 'package:bookingku/core/services/storage_service.dart';
@@ -22,6 +24,10 @@ import 'package:bookingku/features/notification/presentation/providers/notificat
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Indonesian locale for date formatting
+  await initializeDateFormatting('id', null);
+  Intl.defaultLocale = 'id';
 
   // Initialize Storage Service
   final storageService = StorageService();

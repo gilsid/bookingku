@@ -54,7 +54,7 @@ class _DatePickerHorizontalState extends State<DatePickerHorizontal> {
   @override
   Widget build(BuildContext context) {
     // Format nama Bulan & Tahun Indonesia
-    final monthYearStr = DateFormat('MMMM yyyy', 'id_ID').format(_focusedMonth);
+    final monthYearStr = DateFormat('MMMM yyyy', 'id').format(_focusedMonth);
 
     return Column(
       children: [
@@ -97,7 +97,7 @@ class _DatePickerHorizontalState extends State<DatePickerHorizontal> {
                   date.day == widget.selectedDate.day;
 
               // Format Hari singkat (SEN, SEL, RAB, dsb)
-              final dayName = DateFormat('E', 'id_ID').format(date).toUpperCase().substring(0, 3);
+              final dayName = DateFormat('E', 'id').format(date).toUpperCase().substring(0, 3);
               final dayNum = DateFormat('dd').format(date);
 
               return GestureDetector(
