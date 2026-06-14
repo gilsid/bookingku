@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:bookingku/core/theme/app_colors.dart';
-import 'package:bookingku/core/theme/app_text_styles.dart';
 import 'package:bookingku/core/theme/app_spacing.dart';
 import 'package:bookingku/core/utils/validators.dart';
 import 'package:bookingku/features/auth/presentation/providers/auth_provider.dart';
@@ -22,10 +21,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   final _oldPasswordController = TextEditingController();
   final _newPasswordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-
-  bool _obscureOld = true;
-  bool _obscureNew = true;
-  bool _obscureConfirm = true;
 
   @override
   void dispose() {
@@ -84,17 +79,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             CustomTextField(
               controller: _oldPasswordController,
               label: 'KATA SANDI LAMA',
-              hintText: 'Masukkan kata sandi lama Anda',
+              hint: 'Masukkan kata sandi lama Anda',
               prefixIcon: Icons.lock_outline,
-              obscureText: _obscureOld,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _obscureOld ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                  color: AppColors.textSecondary,
-                  size: 20,
-                ),
-                onPressed: () => setState(() => _obscureOld = !_obscureOld),
-              ),
+              isPassword: true,
               validator: (val) => Validators.validateRequired(val, 'Kata sandi lama'),
             ),
             const SizedBox(height: AppSpacing.spacingL),
@@ -103,17 +90,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             CustomTextField(
               controller: _newPasswordController,
               label: 'KATA SANDI BARU',
-              hintText: 'Minimal 8 karakter',
+              hint: 'Minimal 8 karakter',
               prefixIcon: Icons.lock_outline,
-              obscureText: _obscureNew,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _obscureNew ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                  color: AppColors.textSecondary,
-                  size: 20,
-                ),
-                onPressed: () => setState(() => _obscureNew = !_obscureNew),
-              ),
+              isPassword: true,
               validator: Validators.validatePassword,
             ),
             const SizedBox(height: AppSpacing.spacingL),
@@ -122,23 +101,15 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             CustomTextField(
               controller: _confirmPasswordController,
               label: 'KONFIRMASI KATA SANDI BARU',
-              hintText: 'Ulangi kata sandi baru Anda',
+              hint: 'Ulangi kata sandi baru Anda',
               prefixIcon: Icons.lock_outline,
-              obscureText: _obscureConfirm,
-              suffixIcon: IconButton(
-                icon: Icon(
-                  _obscureConfirm ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                  color: AppColors.textSecondary,
-                  size: 20,
-                ),
-                onPressed: () => setState(() => _obscureConfirm = !_obscureConfirm),
-              ),
+              isPassword: true,
               validator: (val) => Validators.validateConfirmPassword(val, _newPasswordController.text),
             ),
             const SizedBox(height: AppSpacing.spacingXXL),
 
             // Submit Button
-            CustomButton(
+            PrimaryButton(
               text: 'Simpan Kata Sandi',
               isLoading: authProvider.isLoading,
               onPressed: _changePassword,

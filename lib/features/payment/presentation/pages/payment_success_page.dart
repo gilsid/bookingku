@@ -24,7 +24,7 @@ class PaymentSuccessPage extends StatelessWidget {
             children: [
               Text('Pemesanan tidak ditemukan.', style: AppTextStyles.bodyMedium),
               const SizedBox(height: 16),
-              CustomButton(
+              PrimaryButton(
                 text: 'Kembali ke Beranda',
                 onPressed: () => context.goNamed('home'),
               ),
@@ -208,7 +208,7 @@ class PaymentSuccessPage extends StatelessWidget {
                 const SizedBox(height: AppSpacing.spacingXXL),
 
                 // Action Buttons
-                CustomButton(
+                PrimaryButton(
                   text: '📋 Lihat Tiket',
                   onPressed: () {
                     context.pushReplacementNamed(
@@ -218,7 +218,7 @@ class PaymentSuccessPage extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: AppSpacing.spacingM),
-                CustomButton.outlined(
+                CustomOutlinedButton(
                   text: '🏠 Kembali ke Beranda',
                   onPressed: () {
                     context.goNamed('home');

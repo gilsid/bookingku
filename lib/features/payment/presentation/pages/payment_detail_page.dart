@@ -241,7 +241,7 @@ class _PaymentDetailPageState extends State<PaymentDetailPage> {
               const SizedBox(height: AppSpacing.spacingXXL),
 
               // Action Button
-              CustomButton(
+              PrimaryButton(
                 text: 'Bayar Sekarang →',
                 onPressed: () {
                   if (paymentProvider.selectedAccount == null) {

@@ -23,7 +23,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
     if ((emailOrPhone.trim() == mockEmail || emailOrPhone.trim() == mockPhone) &&
         password == '12345678') {
-      final user = const UserModel(
+      const user = UserModel(
         id: 1,
         name: 'Ahmad Reza',
         email: mockEmail,

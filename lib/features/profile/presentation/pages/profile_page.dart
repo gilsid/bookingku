@@ -199,7 +199,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: AppSpacing.spacingXXL),
 
           // Logout Button
-          CustomButton.outlined(
+          CustomOutlinedButton(
             text: 'Keluar',
             onPressed: () {
               _showLogoutConfirmation(context, authProvider);
@@ -264,7 +264,7 @@ class ProfilePage extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text(
+              child: const Text(
                 'Batal',
                 style: TextStyle(color: AppColors.textSecondary, fontWeight: FontWeight.bold),
               ),
@@ -336,7 +336,7 @@ class ProfilePage extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(label, style: TextStyle(fontSize: 11, color: AppColors.textSecondary)),
+            Text(label, style: const TextStyle(fontSize: 11, color: AppColors.textSecondary)),
             Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
           ],
         ),

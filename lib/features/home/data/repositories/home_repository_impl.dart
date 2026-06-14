@@ -10,7 +10,7 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Result<List<PromoBanner>>> getPromoBanners() async {
     await Future.delayed(const Duration(milliseconds: 500));
-    return Result.success([
+    return Result.success(const [
       BannerModel(
         id: 1,
         title: 'Diskon 20% Member Baru',
@@ -38,7 +38,7 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Result<List<PopularSchedule>>> getPopularSchedules() async {
     await Future.delayed(const Duration(milliseconds: 500));
-    return Result.success([
+    return Result.success(const [
       PopularScheduleModel(
         id: 1,
         time: '19:00',

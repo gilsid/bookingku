@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:bookingku/core/theme/app_colors.dart';
-import 'package:bookingku/core/theme/app_text_styles.dart';
 import 'package:bookingku/core/theme/app_spacing.dart';
 import 'package:bookingku/core/utils/validators.dart';
 import 'package:bookingku/features/auth/presentation/providers/auth_provider.dart';
@@ -90,7 +89,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             CustomTextField(
               controller: _nameController,
               label: 'NAMA LENGKAP',
-              hintText: 'Masukkan nama lengkap',
+              hint: 'Masukkan nama lengkap',
               prefixIcon: Icons.person_outline,
               validator: (val) => Validators.validateRequired(val, 'Nama lengkap'),
             ),
@@ -100,7 +99,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             CustomTextField(
               controller: _phoneController,
               label: 'NOMOR TELEPON',
-              hintText: '081234567890',
+              hint: '081234567890',
               prefixIcon: Icons.phone_outlined,
               keyboardType: TextInputType.phone,
               validator: Validators.validatePhone,
@@ -111,7 +110,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             CustomTextField(
               controller: _emailController,
               label: 'EMAIL',
-              hintText: 'contoh@email.com',
+              hint: 'contoh@email.com',
               prefixIcon: Icons.email_outlined,
               keyboardType: TextInputType.emailAddress,
               validator: Validators.validateEmail,
@@ -119,7 +118,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
             const SizedBox(height: AppSpacing.spacingXXL),
 
             // Save Button
-            CustomButton(
+            PrimaryButton(
               text: 'Simpan Perubahan',
               isLoading: authProvider.isLoading,
               onPressed: _saveProfile,

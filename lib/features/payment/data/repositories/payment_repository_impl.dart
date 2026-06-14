@@ -7,7 +7,7 @@ class PaymentRepositoryImpl implements PaymentRepository {
   @override
   Future<Result<List<PaymentAccount>>> getPaymentAccounts() async {
     await Future.delayed(const Duration(milliseconds: 400));
-    return Result.success([
+    return Result.success(const [
       PaymentAccount(
         id: 1,
         type: 'ewallet',

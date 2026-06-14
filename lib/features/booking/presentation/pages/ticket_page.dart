@@ -303,7 +303,7 @@ class _TicketPageState extends State<TicketPage> {
               const SizedBox(height: AppSpacing.spacingXXL),
 
               // Action Buttons
-              CustomButton(
+              PrimaryButton(
                 text: '⬇ Simpan ke Galeri',
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -315,7 +315,7 @@ class _TicketPageState extends State<TicketPage> {
                 },
               ),
               const SizedBox(height: AppSpacing.spacingM),
-              CustomButton.outlined(
+              CustomOutlinedButton(
                 text: '↗ Bagikan Tiket',
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(

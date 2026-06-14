@@ -40,8 +40,6 @@ class _HistoryPageState extends State<HistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    final bookingProvider = context.watch<BookingProvider>();
-
     return Scaffold(
       backgroundColor: AppColors.scaffoldBackground,
       appBar: BookingKuAppBar(
@@ -98,7 +96,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   return const EmptyStateWidget(
                     icon: Icons.history_outlined,
                     title: 'Belum Ada Transaksi',
-                    message: 'Transaksi pemesanan lapangan Anda akan tercatat di sini.',
+                    description: 'Transaksi pemesanan lapangan Anda akan tercatat di sini.',
                   );
                 }
 

@@ -116,6 +116,7 @@ class _NotificationPageState extends State<NotificationPage> {
     );
   }
 
+  Widget _buildHeaderSection(String title) {
     return Padding(
       padding: const EdgeInsets.only(left: 4.0),
       child: Text(
@@ -126,6 +127,7 @@ class _NotificationPageState extends State<NotificationPage> {
         ),
       ),
     );
+  }
 
   Widget _buildNotificationCard(
     BuildContext context,

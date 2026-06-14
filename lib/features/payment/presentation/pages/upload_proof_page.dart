@@ -378,7 +378,7 @@ class _UploadProofPageState extends State<UploadProofPage> {
                 const SizedBox(height: AppSpacing.spacingXXL),
 
                 // Action Buttons
-                CustomButton(
+                PrimaryButton(
                   text: 'Kirim Bukti Pembayaran',
                   onPressed: _submitProof,
                 ),
