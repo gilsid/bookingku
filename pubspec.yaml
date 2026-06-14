@@ -1,0 +1,57 @@
+name: bookingku
+description: BookingKu - Aplikasi reservasi lapangan mini soccer.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  provider: ^6.1.0
+
+  # Navigation
+  go_router: ^14.0.0
+
+  # Network (prepared for future API integration)
+  http: ^1.2.0
+
+  # Local Storage
+  shared_preferences: ^2.3.0
+
+  # Image Picker (upload bukti pembayaran)
+  image_picker: ^1.1.0
+
+  # Cached Images
+  cached_network_image: ^3.4.0
+
+  # Date Formatting
+  intl: ^0.19.0
+
+  # Equatable (for entity comparison)
+  equatable: ^2.0.0
+
+  # Google Fonts
+  google_fonts: ^6.2.0
+
+  # SVG Support
+  flutter_svg: ^2.0.0
+
+  # Smooth page indicators (for banners)
+  smooth_page_indicator: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
