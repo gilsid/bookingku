@@ -160,22 +160,6 @@ class ProfilePage extends StatelessWidget {
                   child: Divider(color: AppColors.dividerGrey, height: 1),
                 ),
                 _buildMenuItem(
-                  icon: Icons.account_balance_wallet_outlined,
-                  title: 'Metode Pembayaran',
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Halaman Metode Pembayaran sedang dikembangkan'),
-                        behavior: SnackBarBehavior.floating,
-                      ),
-                    );
-                  },
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Divider(color: AppColors.dividerGrey, height: 1),
-                ),
-                _buildMenuItem(
                   icon: Icons.help_outline,
                   title: 'Pusat Bantuan',
                   onTap: () {
