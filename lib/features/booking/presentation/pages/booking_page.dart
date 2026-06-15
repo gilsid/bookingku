@@ -81,7 +81,10 @@ class _BookingPageState extends State<BookingPage> {
     final bookingProvider = context.watch<BookingProvider>();
 
     return Scaffold(
-      appBar: const BookingKuAppBar(notificationCount: 2),
+      appBar: BookingKuAppBar(
+        notificationCount: 2,
+        onNotificationTap: () => context.pushNamed('notification'),
+      ),
       body: LoadingOverlay(
         isLoading: bookingProvider.isLoading,
         message: 'Menyiapkan pesanan...',

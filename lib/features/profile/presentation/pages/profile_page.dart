@@ -84,16 +84,19 @@ class ProfilePage extends StatelessWidget {
                     Positioned(
                       bottom: 0,
                       right: 0,
-                      child: Container(
-                        padding: const EdgeInsets.all(6),
-                        decoration: const BoxDecoration(
-                          color: AppColors.primaryDark,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.edit,
-                          color: AppColors.white,
-                          size: 14,
+                      child: GestureDetector(
+                        onTap: () => context.pushNamed('edit-profile'),
+                        child: Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: const BoxDecoration(
+                            color: AppColors.primaryDark,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.edit,
+                            color: AppColors.white,
+                            size: 14,
+                          ),
                         ),
                       ),
                     ),
@@ -230,9 +233,9 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  void _showLogoutConfirmation(BuildContext context, AuthProvider authProvider) {
+  void _showLogoutConfirmation(BuildContext outerContext, AuthProvider authProvider) {
     showDialog(
-      context: context,
+      context: outerContext,
       builder: (context) {
         return AlertDialog(
           backgroundColor: AppColors.white,
@@ -255,11 +258,11 @@ class ProfilePage extends StatelessWidget {
             ),
             TextButton(
               onPressed: () async {
-                Navigator.pop(context);
                 final result = await authProvider.logout();
+                if (context.mounted) Navigator.pop(context);
                 result.when(
                   success: (_) {
-                    context.goNamed('login');
+                    outerContext.goNamed('login');
                   },
                   failure: (_) {},
                 );
