@@ -13,9 +13,25 @@ class AuthRepositoryImpl implements AuthRepository {
 
   AuthRepositoryImpl(this._storageService);
 
+  static const String _registeredUsersKey = 'registered_users';
+
+  List<Map<String, dynamic>> _loadRegisteredUsers() {
+    final data = _storageService.getString(_registeredUsersKey);
+    if (data == null) return [];
+    try {
+      return (jsonDecode(data) as List<dynamic>).cast<Map<String, dynamic>>();
+    } catch (_) {
+      return [];
+    }
+  }
+
+  Future<void> _saveRegisteredUsers(List<Map<String, dynamic>> users) async {
+    await _storageService.saveString(_registeredUsersKey, jsonEncode(users));
+  }
+
   @override
   Future<Result<User>> login(String emailOrPhone, String password) async {
-    await Future.delayed(const Duration(milliseconds: 1000)); // Simulasi network delay
+    await Future.delayed(const Duration(milliseconds: 1000));
 
     // Akun default untuk mock
     const mockEmail = 'ahmad.reza@email.com';
@@ -31,15 +47,29 @@ class AuthRepositoryImpl implements AuthRepository {
         profileImageUrl: null,
       );
 
-      // Simpan status login ke storage
       await _storageService.saveToken('mock_jwt_token_ahmad_reza');
       await _storageService.saveUserData(jsonEncode(user.toJson()));
       await _storageService.setLoggedIn(true);
 
       return Result.success(user);
-    } else {
-      return Result.failure('Email/Nomor telepon atau kata sandi salah');
     }
+
+    // Cek dari user yang sudah registrasi
+    final registeredUsers = _loadRegisteredUsers();
+    for (final data in registeredUsers) {
+      if ((emailOrPhone.trim() == data['email'] || emailOrPhone.trim() == data['phone']) &&
+          password == data['password']) {
+        final user = UserModel.fromJson(data);
+
+        await _storageService.saveToken('mock_jwt_token_${user.id}');
+        await _storageService.saveUserData(jsonEncode(user.toJson()));
+        await _storageService.setLoggedIn(true);
+
+        return Result.success(user);
+      }
+    }
+
+    return Result.failure('Email/Nomor telepon atau kata sandi salah');
   }
 
   @override
@@ -47,13 +77,23 @@ class AuthRepositoryImpl implements AuthRepository {
       String name, String email, String phone, String password) async {
     await Future.delayed(const Duration(milliseconds: 1000));
 
+    final registeredUsers = _loadRegisteredUsers();
+    final newId = registeredUsers.length + 2;
+
     final newUser = UserModel(
-      id: 2,
+      id: newId,
       name: name,
       email: email,
       phone: phone,
       profileImageUrl: null,
     );
+
+    // Simpan ke daftar user terdaftar (tidak terhapus saat logout)
+    registeredUsers.add({
+      ...newUser.toJson(),
+      'password': password,
+    });
+    await _saveRegisteredUsers(registeredUsers);
 
     // Simpan status login otomatis setelah register
     await _storageService.saveToken('mock_jwt_token_new_user');
@@ -66,7 +106,9 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Result<void>> logout() async {
     await Future.delayed(const Duration(milliseconds: 500));
-    await _storageService.clearAll();
+    // Hanya hapus session, bukan data user terdaftar
+    await _storageService.removeToken();
+    await _storageService.setLoggedIn(false);
     return Result.success(null);
   }
 
