@@ -51,8 +51,8 @@ flutter analyze     # Linting
 flutter test        # Test
 ```
 
-## TODO
+## Keterbatasan
 
-- [ ] Integrasi REST API
-- [ ] Admin web panel
-- [ ] Real-time notification
+- **Mock data** — Semua data masih simulasi, belum terhubung REST API
+- **Belum ada admin panel** — Manajemen lapangan, booking, dan user via web belum tersedia
+- **Notifikasi lokal** — Hanya notifikasi in-app, push notification belum diimplementasikan
