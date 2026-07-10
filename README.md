@@ -1,19 +1,58 @@
-# bookingku
+# BookingKu ⚽
 
-A new Flutter project created with FlutLab - https://flutlab.io
+Aplikasi reservasi lapangan **mini soccer** (futsal) berbasis Flutter.
 
-## Getting Started
+## Fitur
 
-A few resources to get you started if this is your first Flutter project:
+- **Auth** — Login/register dengan email atau nomor telepon
+- **Home** — Daftar lapangan populer, promo, dan banner
+- **Field** — Detail lapangan, jadwal, dan harga sewa
+- **Booking** — Pilih jadwal, konfirmasi, dan dapatkan tiket
+- **Payment** — Upload bukti transfer, status pembayaran
+- **History** — Riwayat booking dan ticket digital
+- **Notification** — Notifikasi status booking dan promo
+- **Profile** — Edit profil, ganti password
 
-- https://flutter.dev/docs/get-started/codelab
-- https://flutter.dev/docs/cookbook
+## Tech Stack
 
-For help getting started with Flutter, view our
-https://flutter.dev/docs, which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Lapisan        | Teknologi                               |
+| -------------- | --------------------------------------- |
+| Framework      | Flutter (+ Dart)                        |
+| State Mgmt     | Provider + ChangeNotifier               |
+| Navigation     | GoRouter (ShellRoute untuk tab bottom)  |
+| Local Storage  | SharedPreferences                       |
+| Arsitektur     | Clean Architecture (feature-based)      |
 
-## Getting Started: FlutLab - Flutter Online IDE
+## Memulai
 
-- How to use FlutLab? Please, view our https://flutlab.io/docs
-- Join the discussion and conversation on https://flutlab.io/residents
+```bash
+flutter pub get
+flutter run
+```
+
+Login demo: `ahmad.reza@email.com` / `081234567890` — password `12345678`
+
+## Struktur
+
+```
+lib/
+├── core/          # Theme, routes, network, constants, utils
+├── features/      # 9 modul fitur (auth, booking, home, dll.)
+│   └── [feature]/ # data/ domain/ presentation/
+└── shared/        # Widget umum, model, extensions
+```
+
+Data saat ini menggunakan **mock datasource** (simulasi `Future.delayed`). Saat backend REST API siap, ganti dengan `RemoteDatasource` — endpoint sudah didefinisikan di `ApiEndpoints`.
+
+## Pengembangan
+
+```bash
+flutter analyze     # Linting
+flutter test        # Test
+```
+
+## TODO
+
+- [ ] Integrasi REST API
+- [ ] Admin web panel
+- [ ] Real-time notification
